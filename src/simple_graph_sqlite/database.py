@@ -9,7 +9,7 @@ using an atomic transaction wrapper function.
 
 """
 
-import sqlite3
+import pysqlite3
 import json
 import pathlib
 from functools import lru_cache
@@ -40,7 +40,7 @@ traverse_template = env.get_template('traverse.template')
 def atomic(db_file, cursor_exec_fn):
     connection = None
     try:
-        connection = sqlite3.connect(db_file)
+        connection = pysqlite3.connect(db_file)
         cursor = connection.cursor()
         cursor.execute("PRAGMA foreign_keys = TRUE;")
         results = cursor_exec_fn(cursor)
