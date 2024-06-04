@@ -1,7 +1,7 @@
-import sqlite3
+import pysqlite3
 import json
 from simple_graph_sqlite import database as db
-from test_common import database_test_file, nodes, edges, apple
+from tests.test_common import database_test_file, nodes, edges, apple
 
 
 def test_initialize(database_test_file, apple):
@@ -64,7 +64,8 @@ def test_exception(database_test_file, apple, nodes):
     node_id = 1
     try:
         db.atomic(database_test_file, db.add_node(nodes[node_id], node_id))
-    except sqlite3.IntegrityError as e:  # should be thrown since we are inserting a duplicate node
+    except pysqlite3.IntegrityError as e:  
+        # should be thrown since we are inserting a duplicate node
         assert 'UNIQUE constraint failed: nodes.id' in e.args
 
     # Inserting a new node should work

@@ -2,7 +2,7 @@ from pathlib import Path
 from filecmp import cmp
 from simple_graph_sqlite import database as db
 from simple_graph_sqlite import visualizers as viz
-from test_common import database_test_file, nodes, edges, apple
+from tests.test_common import database_test_file, nodes, edges, apple
 
 
 def test_visualization(database_test_file, apple, tmp_path):
