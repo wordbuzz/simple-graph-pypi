@@ -12,3 +12,10 @@ __pycache__/
 .tox
 .cache
 .pytest_cache
+
+# vim
+*.py.swo
+*.swo
+*.sw*
+*.py.bak
+
